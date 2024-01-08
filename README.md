@@ -2,6 +2,7 @@
 
 1. Created the react project using create-react-app
 2. CSS library used => Tailwind CSS.
+3. Routing is done via react-router-dom
 
 ## Features present in this project
 
