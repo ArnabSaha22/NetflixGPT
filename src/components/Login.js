@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [isSignInForm, setIsSignInForm] = useState(false);
+  const toggleSignInForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+
   return (
     <div>
       <Header />
@@ -13,7 +19,16 @@ const Login = () => {
         ></img>{" "}
       </div>
       <form className="absolute w-2/12 bg-black my-48 mx-auto right-0 left-0 h-96 w-96 m-5 p-5 text-white rounded-lg bg-opacity-70">
-        <h3 className="text-2xl py-4 font-sans">Sign In</h3>
+        <h3 className="text-2xl py-4 font-sans">
+          {isSignInForm ? "Sign Up" : "Sign In"}
+        </h3>
+        {isSignInForm ? (
+          <input
+            type="text"
+            placeholder="Name"
+            className="p-1 m-1 w-full rounded-lg font-sans text-black"
+          />
+        ) : null}
         <input
           type="text"
           placeholder="Email Address"
@@ -25,12 +40,37 @@ const Login = () => {
           placeholder="Password"
           className="p-1 m-1 w-full rounded-lg text-black"
         />
+        {isSignInForm ? (
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="p-1 m-1 w-full rounded-lg text-black"
+          />
+        ) : null}
         <br></br>
-        <button className="p-2 m-2 bg-red-700 rounded-lg">Sign In</button>
-        <p></p>
-        <h4 className="pt-10 text-sm">
-          <span className="font-extralight text-gray-400">New to Netflix?</span>{" "}
-          SignUp now
+        <button className="p-2 m-2 bg-red-700 rounded-lg">
+          {isSignInForm ? "Sign Up" : "Sign In"}
+        </button>
+        <h4 className="pt-3 text-sm">
+          {!isSignInForm ? (
+            <>
+              <span className="font-extralight text-gray-400">
+                New to Netflix?
+              </span>{" "}
+              <Link to="/" onClick={toggleSignInForm}>
+                SignUp now
+              </Link>
+            </>
+          ) : (
+            <>
+              <span className="font-extralight text-gray-400">
+                Already have an Account?
+              </span>{" "}
+              <Link to="/" onClick={toggleSignInForm}>
+                SignIn
+              </Link>
+            </>
+          )}
         </h4>
         <h4 className="font-extralight text-gray-400 text-xs">
           Sign in is protected by Google reCAPTCHA to ensure you’re not a bot.
