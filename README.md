@@ -9,6 +9,8 @@
 1. Login/SignUp screen
     - SignIn/SignUp form
     - Redirect to browse page (only after loggin in)
+    - Routing of app
+    - Form Validation (done via Regex)
 2. Browse page (Comes only after authentication)
     - Header
     - Main Movie
@@ -19,3 +21,4 @@
 3. NetflixGPT
     - Search Bar
     - Movie Suggestions accordingly
+
