@@ -3,6 +3,8 @@
 1. Created the react project using create-react-app
 2. CSS library used => Tailwind CSS.
 3. Routing is done via react-router-dom
+4. Email Authentication and backend done via Google Firebase
+5. Hosted via Google Firebase -> Url:- https://netflixgpt-b7267.firebaseapp.com/
 
 ## Features present in this project
 
