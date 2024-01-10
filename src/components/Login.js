@@ -2,6 +2,11 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { validData, validData2 } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(false); //State variable used to toggle between SignIn and SignUp on the same page.
@@ -19,6 +24,25 @@ const Login = () => {
     //Validate the form data for Sign In part (Validation function written in utils folder)
     const msg = validData(email.current.value, password.current.value);
     setErrorMsg(msg);
+    if (msg === null) {
+      //Validate an existing user(for SignIn form) if there is no error message
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   const handleButtonClick2 = () => {
@@ -29,6 +53,27 @@ const Login = () => {
       confirmPassword.current.value
     );
     setErrorMsg(msg2);
+
+    if (msg2 === null) {
+      //Create a new user (for SignUp form) only if there is no error message
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          //console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+          // ..
+        });
+    }
   };
 
   return (
