@@ -1,19 +1,22 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validData, validData2 } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(false); //State variable used to toggle between SignIn and SignUp on the same page.
   //useRef used below to reference the input fields and access the data (can be done via useState as well)
-  const email = useRef();
-  const password = useRef();
-  const confirmPassword = useRef();
+  const email = useRef(null);
+  const name = useRef(null);
+  const password = useRef(null);
+  const confirmPassword = useRef(null);
+  const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(null); //State variable to set the error message on incorrect data entry
   const toggleSignInForm = () => {
     //Function to toggle between SignIn and SignUp
@@ -34,6 +37,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          navigate("/browse"); //navigating to the browse page
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -61,8 +65,9 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
+          navigate("/browse");
           const user = userCredential.user;
-          console.log(user)
+          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
