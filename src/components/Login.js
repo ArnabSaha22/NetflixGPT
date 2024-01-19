@@ -160,7 +160,7 @@ const Login = () => {
           {!isSignInForm ? (
             <>
               <span className="font-extralight text-gray-400">
-                New to Netflix?
+                New to Dummy Netflix?
               </span>{" "}
               <Link to="/" onClick={toggleSignInForm}>
                 SignUp now
