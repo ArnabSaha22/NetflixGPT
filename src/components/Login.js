@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { validData, validData2 } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
@@ -8,15 +8,18 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { netflix_BgImage } from "../utils/Constants";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(false); //State variable used to toggle between SignIn and SignUp on the same page.
   //useRef used below to reference the input fields and access the data (can be done via useState as well)
   const email = useRef(null);
-  const name = useRef(null);
+  const userName = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [errorMsg, setErrorMsg] = useState(null); //State variable to set the error message on incorrect data entry
   const toggleSignInForm = () => {
     //Function to toggle between SignIn and SignUp
@@ -37,7 +40,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse"); //navigating to the browse page
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -65,9 +67,18 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
-          navigate("/browse");
           const user = userCredential.user;
-          console.log(user);
+          //console.log(userName);
+          updateProfile(user, {
+            displayName: userName.current.value,
+          })
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
+            .catch((error) => {});
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -83,7 +94,7 @@ const Login = () => {
       <Header />
       <div>
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={netflix_BgImage}
           alt="Netflix Background Img"
           className="absolute"
         ></img>{" "}
@@ -100,6 +111,7 @@ const Login = () => {
             type="text"
             placeholder="Name"
             className="p-1 m-1 w-full rounded-lg font-sans text-black"
+            ref={userName}
             required
           />
         ) : null}
