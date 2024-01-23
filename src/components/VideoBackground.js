@@ -9,7 +9,25 @@ const VideoBackground = ({ movieId }) => {
   useMovieTrailer(movieId);
 
   return (
-    <div className="w-screen absolute">
+    <div className=" w-screen">
+      <iframe
+        className="w-screen aspect-video"
+        src={
+          "https://www.youtube.com/embed/" +
+          selector 
+        }
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
+    </div>
+  );
+};
+export default VideoBackground;
+
+
+/**
+ * 
+ * <div className="w-screen">
       <iframe
         className=" w-screen aspect-video"
         src={
@@ -19,14 +37,8 @@ const VideoBackground = ({ movieId }) => {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
-
     </div>
   );
 };
-export default VideoBackground;
-
-/**
  * 
- * 
-
  */
