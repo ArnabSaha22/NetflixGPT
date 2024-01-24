@@ -92,13 +92,6 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div>
-        <img
-          src={netflix_BgImage}
-          alt="Netflix Background Img"
-          className="absolute"
-        ></img>{" "}
-      </div>
       <form
         onSubmit={(e) => e.preventDefault()}
         className="absolute bg-black my-48 mx-auto right-0 left-0 h-96 w-96 m-5 p-5 text-white rounded-lg bg-opacity-70"
@@ -185,3 +178,14 @@ const Login = () => {
   );
 };
 export default Login;
+
+/**
+ * 
+ * <div>
+        <img
+          src={netflix_BgImage}
+          alt="Netflix Background Img"
+          className="absolute"
+        ></img>{" "}
+      </div>
+ */

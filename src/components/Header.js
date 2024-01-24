@@ -46,7 +46,7 @@ const Header = () => {
   };
   return (
     <div className="absolute px-3 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
-      <img src={netflix_Logo} alt="Netflix Logo" className="h-30 w-40"></img>
+      
       {user && (
         <div className="flex md:flex md:flex-grow flex-row justify-end space-x-1 py-2">
           <h3 className="py-2 text-white font-thin p-2">
@@ -65,3 +65,8 @@ const Header = () => {
 };
 
 export default Header;
+
+/**
+ * 
+ <img src={netflix_Logo} alt="Netflix Logo" className="h-30 w-40"></img>
+ */
