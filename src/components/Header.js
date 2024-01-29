@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { netflix_Logo } from "../utils/Constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -44,20 +46,38 @@ const Header = () => {
         // An error happened. (Build an error page)
       });
   };
+
+  const handleGptSearchClick = () => {
+    //Toggle the GPT search
+    dispatch(toggleGptSearchView())
+  };
+
   return (
-    <div className="absolute px-3 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
-      
+    <div>
       {user && (
-        <div className="flex md:flex md:flex-grow flex-row justify-end space-x-1 py-2">
-          <h3 className="py-2 text-white font-thin p-2">
-            Hi {user.displayName},
-          </h3>
-          <button
-            className="h-10 w-20 bg-red-900 rounded-lg text-white"
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button>
+        <div className="absolute px-3 bg-gradient-to-b from-black z-10 w-screen flex justify-between">
+          {/* <img
+            src={netflix_Logo}
+            alt="Netflix Logo"
+            className="h-30 w-40 flex jus"
+          ></img> */}
+          <div className="flex md:flex md:flex-grow flex-row justify-end space-x-1 py-2">
+            <h3 className="py-2 text-white font-thin p-2">
+              Hi {user.displayName},
+            </h3>
+            <button
+              className="h-10 w-32 bg-red-900 rounded-lg text-white"
+              onClick={handleGptSearchClick}
+            >
+              GPT Search
+            </button>
+            <button
+              className="h-10 w-20 bg-red-900 rounded-lg text-white"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -65,8 +85,3 @@ const Header = () => {
 };
 
 export default Header;
-
-/**
- * 
- <img src={netflix_Logo} alt="Netflix Logo" className="h-30 w-40"></img>
- */
