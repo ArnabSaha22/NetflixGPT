@@ -10,6 +10,7 @@
 8. Redux store used to add movies to the browse page
 9. GPT APIs used to develop a movie recommendation engine.
 10. GPT search page has multi-language feature in Hindi and English
+11. npm openai => used to access openai helper functions directly
 
 ** Note -> The Netflix header and the background image from the Login page is removed to avoid copyright issues.
 

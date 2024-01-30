@@ -53,6 +53,7 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
 
+  //Handle the language dropdown and set the language accordingly
   const handleLanguageChange = (e) => {
     dispatch(setLanguageHindi(e.target.value));
   };
@@ -79,21 +80,12 @@ const Header = () => {
                 <option value="hindi">Hindi</option>
               </select>
             )}
-            {!gptEnabled ? (
-              <button
-                className="h-10 w-28 bg-red-900 rounded-lg text-white"
-                onClick={handleGptSearchClick}
-              >
-                GPT Search
-              </button>
-            ) : (
-              <button
-                className="h-10 w-28 bg-red-900 rounded-lg text-white"
-                onClick={handleGptSearchClick}
-              >
-                Home Page
-              </button>
-            )}
+            <button
+              className="h-10 w-28 bg-red-900 rounded-lg text-white"
+              onClick={handleGptSearchClick}
+            >
+              {!gptEnabled ? "GPT Search" : "Home Page"}
+            </button>
             <button
               className="h-10 w-20 bg-red-900 rounded-lg text-white"
               onClick={handleSignOut}

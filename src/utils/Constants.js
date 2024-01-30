@@ -14,3 +14,7 @@ export const API_OPTIONS = {
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w300/";
+
+//export const GPT_KEY = "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"
+
+export const GPT_KEY = "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";
