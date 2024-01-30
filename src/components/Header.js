@@ -9,12 +9,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { netflix_Logo } from "../utils/Constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
-
+import { setLanguageHindi } from "../utils/languageSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const gptEnabled = useSelector((store) => store.gpt.showGptSearch);
 
   //useEffect placed in header as the navigation will work only inside the Route Provider  child components and --
   //-- Header is that child component that is present throughout our app.
@@ -49,7 +50,11 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     //Toggle the GPT search
-    dispatch(toggleGptSearchView())
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(setLanguageHindi(e.target.value));
   };
 
   return (
@@ -65,12 +70,30 @@ const Header = () => {
             <h3 className="py-2 text-white font-thin p-2">
               Hi {user.displayName},
             </h3>
-            <button
-              className="h-10 w-32 bg-red-900 rounded-lg text-white"
-              onClick={handleGptSearchClick}
-            >
-              GPT Search
-            </button>
+            {gptEnabled && (
+              <select
+                className="h-10 w-20 bg-red-900 rounded-lg text-white"
+                onChange={handleLanguageChange}
+              >
+                <option value="en">English</option>
+                <option value="hindi">Hindi</option>
+              </select>
+            )}
+            {!gptEnabled ? (
+              <button
+                className="h-10 w-28 bg-red-900 rounded-lg text-white"
+                onClick={handleGptSearchClick}
+              >
+                GPT Search
+              </button>
+            ) : (
+              <button
+                className="h-10 w-28 bg-red-900 rounded-lg text-white"
+                onClick={handleGptSearchClick}
+              >
+                Home Page
+              </button>
+            )}
             <button
               className="h-10 w-20 bg-red-900 rounded-lg text-white"
               onClick={handleSignOut}
