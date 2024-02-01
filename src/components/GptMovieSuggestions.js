@@ -11,7 +11,11 @@ const GptMovieSuggestions = () => {
   return (
     <div className=" p-4">
       {searchedMovieNames.map((movie, index) => (
-        <MovieList title={movie} movies={searchedMovieResults[index]} />
+        <MovieList
+          key={index}
+          title={movie}
+          movies={searchedMovieResults[index]}
+        />
       ))}
     </div>
   );
