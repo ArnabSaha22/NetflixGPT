@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { netflix_Logo } from "../utils/Constants";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { addGptMovieResult, toggleGptSearchView } from "../utils/gptSlice";
 import { setLanguageHindi } from "../utils/languageSlice";
 
 const Header = () => {
