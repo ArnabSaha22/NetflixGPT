@@ -8,7 +8,7 @@ const SecondaryVideoContainer = () => {
 
   //console.log(movies.nowPlayingMovies);
   return (
-    <div className="bg-black -mt-10 relative z-10">
+    <div className="bg-black mt-0 md:-mt-10 relative z-10">
       <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
       <MovieList title={"Top Rated"} movies={movies.topRatedMovies} />
       <MovieList title={"Popular"} movies={movies.popularMovies} />

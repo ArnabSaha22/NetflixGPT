@@ -28,7 +28,7 @@ const GptSearchBar = () => {
     const gptQuery =
       "Act as a movie recommendation system and suggest some movies for the query" +
       searchText.current.value +
-      ". Only give me names of 10 movies, comma seperated";
+      ". Only give me names of 10 movies, comma seperated in a single line without serial numbers before the movie name";
 
     //Make an API call to GPT API and get movie results.
     const gptResults = await openai.chat.completions.create({
@@ -37,13 +37,13 @@ const GptSearchBar = () => {
     });
     if (!gptResults) return;
     const gptMoviesList = gptResults.choices[0]?.message?.content.split(", ");
-    //console.log(gptMoviesList);
+    console.log(gptMoviesList);
 
     //For each movie will call the Search API of TMDB and will find out the results of that movie
     //Since searchMovieTMDB is an async function so here a Promise Array will be returned
     const promiseArray = gptMoviesList.map((movie) => searchMovieTMDB(movie));
     const tmdbResult = await Promise.all(promiseArray); //Extracting the result from the promises
-    //console.log(tmdbResult);
+    console.log(tmdbResult);
     dispatch(
       addGptMovieResult({ movieNames: gptMoviesList, movieResults: tmdbResult })
     );
@@ -51,11 +51,11 @@ const GptSearchBar = () => {
 
   return (
     <div>
-      <form className="pt-40 pl-96" onSubmit={(e) => e.preventDefault()}>
+      <form className="pt-40 md:pl-96 " onSubmit={(e) => e.preventDefault()}>
         <input
           ref={searchText}
           type="text"
-          className="h-10 w-1/2 rounded-xl p-2 m-1.5 shadow-md focus:ring-red-800"
+          className="h-10 md:w-1/2 w-full rounded-xl p-2 m-1.5 shadow-md focus:ring-red-800"
           placeholder={
             languageSelected === "en"
               ? lang.gptSearchBarPlaceholder.eng.text

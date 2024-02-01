@@ -66,7 +66,7 @@ const Header = () => {
             src={netflix_Logo}
             alt="Netflix Logo"
             className="h-30 w-40 flex jus"
-          ></img> */}
+      ></img> */ }
           <div className="flex md:flex md:flex-grow flex-row justify-end space-x-1 py-2">
             <h3 className="py-2 text-white font-thin p-2">
               Hi {user.displayName},
