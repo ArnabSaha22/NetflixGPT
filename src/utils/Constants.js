@@ -1,7 +1,7 @@
-export const netflix_Logo = process.env.REACT_APP_NETFLIX_LOGO
+export const netflix_Logo = process.env.REACT_APP_NETFLIX_LOGO;
 
 export const netflix_BgImage =
-  "https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+  "https://help.nflxext.com/0af6ce3e-b27a-4722-a5f0-e32af4df3045_what_is_netflix_5_en.png";
 
 export const API_OPTIONS = {
   method: "GET",

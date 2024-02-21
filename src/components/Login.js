@@ -91,6 +91,13 @@ const Login = () => {
 
   return (
     <div>
+      <div>
+        <img
+          src={netflix_BgImage}
+          alt="Netflix Background Img"
+          className="absolute"
+        ></img>{" "}
+      </div>
       <Header />
       <form
         onSubmit={(e) => e.preventDefault()}
