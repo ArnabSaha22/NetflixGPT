@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUpcommingMovies } from "../utils/moviesSlice";
 
+//Custom hook to access Upcomming movies for the main page.
 const useUpcommingMovies = () => {
   const dispatch = useDispatch();
   const upcomingMovies = useSelector((store) => store.movies.upcommingMovies);

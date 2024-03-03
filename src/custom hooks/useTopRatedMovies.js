@@ -3,6 +3,7 @@ import { API_OPTIONS } from "../utils/Constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addTopRatedMovies } from "../utils/moviesSlice";
 
+//Custom hook to access Top rated movies for the main page.
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
   const topReatedMovies = useSelector((store) => store.movies.topRatedMovies);

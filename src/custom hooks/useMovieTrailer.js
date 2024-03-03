@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/Constants";
 import { addMoviesTrailers } from "../utils/moviesSlice";
 import { useEffect } from "react";
-
+//Custom Hook to acces the movie trailer on the main page
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
   const nowPlayingTrailer = useSelector((store) => store.movies.trailerVideo);

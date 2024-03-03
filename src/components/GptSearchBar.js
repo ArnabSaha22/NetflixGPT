@@ -37,13 +37,13 @@ const GptSearchBar = () => {
     });
     if (!gptResults) return;
     const gptMoviesList = gptResults.choices[0]?.message?.content.split(", ");
-    console.log(gptMoviesList);
+    //console.log(gptMoviesList);
 
     //For each movie will call the Search API of TMDB and will find out the results of that movie
     //Since searchMovieTMDB is an async function so here a Promise Array will be returned
     const promiseArray = gptMoviesList.map((movie) => searchMovieTMDB(movie));
     const tmdbResult = await Promise.all(promiseArray); //Extracting the result from the promises
-    console.log(tmdbResult);
+    //console.log(tmdbResult);
     dispatch(
       addGptMovieResult({ movieNames: gptMoviesList, movieResults: tmdbResult })
     );

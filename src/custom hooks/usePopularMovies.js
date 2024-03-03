@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPopularMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
+//Custom hook to access poplular movies for the main page.
 const usePopularMovies = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector((store) => store.movies.popularMovies);

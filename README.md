@@ -1,6 +1,6 @@
 ## Netflix GPT
 
-1. Created the react project using create-react-app
+1. Created the react project using create-react-app [Bundler - Webpack]
 2. CSS library used => Tailwind CSS.
 3. Routing is done via react-router-dom
 4. Email Authentication and backend done via Google Firebase
@@ -8,7 +8,7 @@
 6. Created a redux store with a user slice to centrally store the user data.
 7. TMDB Free API used to show the movie details on the browse page
 8. Redux store used to add movies to the browse page
-9. GPT APIs used to develop a movie recommendation engine.
+9. OPENAI's APIs used to develop a movie recommendation engine.
 10. GPT search page has multi-language feature in Hindi and English
 11. npm openai => used to access openai helper functions directly
 
@@ -37,5 +37,4 @@
 
 3. NetflixGPT
     - Search Bar
-    - Movie Suggestions accordingly
-
+    - Movie Suggestions accordingly based on the genre prompted. Example of some prompts -> Retro Indian Bollywood movies, latest Indian Hindi comedy movies, latest Indian Tamil action movies.
